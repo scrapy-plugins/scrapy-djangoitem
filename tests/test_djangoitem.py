@@ -1,35 +1,32 @@
 import os
 from twisted.trial import unittest
 
-from scrapy.contrib.djangoitem import DjangoItem, Field
-from scrapy import optional_features
+os.environ['DJANGO_SETTINGS_MODULE'] = 'tests.settings'
 
-os.environ['DJANGO_SETTINGS_MODULE'] = 'tests.test_djangoitem.settings'
+from scrapy_djangoitem import DjangoItem, Field
+from tests.models import Person, IdentifiedPerson
 
-if 'django' in optional_features:
-    from .models import Person, IdentifiedPerson
 
-    class BasePersonItem(DjangoItem):
-        django_model = Person
+class BasePersonItem(DjangoItem):
+    django_model = Person
 
-    class NewFieldPersonItem(BasePersonItem):
-        other = Field()
 
-    class OverrideFieldPersonItem(BasePersonItem):
-        age = Field()
+class NewFieldPersonItem(BasePersonItem):
+    other = Field()
 
-    class IdentifiedPersonItem(DjangoItem):
-        django_model = IdentifiedPerson
+
+class OverrideFieldPersonItem(BasePersonItem):
+    age = Field()
+
+
+class IdentifiedPersonItem(DjangoItem):
+    django_model = IdentifiedPerson
 
 
 class DjangoItemTest(unittest.TestCase):
 
     def assertSortedEqual(self, first, second, msg=None):
         return self.assertEqual(sorted(first), sorted(second), msg)
-
-    def setUp(self):
-        if 'django' not in optional_features:
-            raise unittest.SkipTest("Django is not available")
 
     def test_base(self):
         i = BasePersonItem()
