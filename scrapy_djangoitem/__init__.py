@@ -1,12 +1,10 @@
+from django.core.exceptions import ValidationError
 from scrapy.item import Field, Item, ItemMeta
-from scrapy import optional_features
-if 'django' in optional_features:
-    from django.core.exceptions import ValidationError
 
 
 class DjangoItemMeta(ItemMeta):
 
-    def  __new__(mcs, class_name, bases, attrs):
+    def __new__(mcs, class_name, bases, attrs):
         cls = super(DjangoItemMeta, mcs).__new__(mcs, class_name, bases, attrs)
         cls.fields = cls.fields.copy()
 
