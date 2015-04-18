@@ -1,0 +1,2 @@
+Scrapy>=0.24.5
+Django
