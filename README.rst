@@ -1,4 +1,17 @@
-==========
+=================
+scrapy-djangoitem
+=================
+
+scrapy-djangoitem is an extension that allows you to define `Scrapy items
+<http://doc.scrapy.org/en/latest/topics/items.html>`_ using existing `Django
+models <https://docs.djangoproject.com/en/1.8/topics/db/models/>`_.
+
+This utility provides a new class, named ``DjangoItem``, that you can use as a
+regular Scrapy item and link it to a Django model with its ``django_model``
+attribute. Start using it right away by importing it from this package::
+
+    from scrapy_djangoitem import DjangoItem
+
 DjangoItem
 ==========
 
