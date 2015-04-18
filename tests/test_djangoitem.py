@@ -1,5 +1,5 @@
 import os
-from twisted.trial import unittest
+import unittest
 
 os.environ['DJANGO_SETTINGS_MODULE'] = 'tests.settings'
 
