@@ -23,6 +23,8 @@ setup(
         'Programming Language :: Python :: 2',
         'Programming Language :: Python :: 2.7',
         'Topic :: Utilities',
+        'Framework :: Django',
+        'Framework :: Scrapy',
     ],
     install_requires=[
         'Scrapy>=0.24.5',
