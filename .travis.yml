@@ -16,7 +16,7 @@ deploy:
   distributions: sdist bdist_wheel
   user: scrapy
   password:
-    secure:
+    secure: sCcSmDXy2F9H0b5p/Q3+KqPQp3UpqepyBHh7s7yGfNkMb6HgDjvER28AmUuDxUb+zgQ0WL7jqSZvrzAnbe3JTmjNHL3hFywLKFjNmjHIV+I2h+xDz2xjPs2gwtIBOs8AVMgqq0mqigZzlJssdzDlgVLYJ3Nf+vVwDGT5fR72byI=
   on:
     tags: true
     all_branches: true
