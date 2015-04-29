@@ -1,24 +1,24 @@
 language: python
 python: 2.7
 env:
-  - TOXENV=py27
+- TOXENV=py27
 install:
-  - pip install -U tox
+- pip install -U tox
 script: tox
 notifications:
   irc:
     use_notice: true
     skip_join: true
     channels:
-      - irc.freenode.org#scrapy
+    - irc.freenode.org#scrapy
 deploy:
   provider: pypi
   distributions: sdist bdist_wheel
   user: scrapy
   password:
-    secure: sCcSmDXy2F9H0b5p/Q3+KqPQp3UpqepyBHh7s7yGfNkMb6HgDjvER28AmUuDxUb+zgQ0WL7jqSZvrzAnbe3JTmjNHL3hFywLKFjNmjHIV+I2h+xDz2xjPs2gwtIBOs8AVMgqq0mqigZzlJssdzDlgVLYJ3Nf+vVwDGT5fR72byI=
+    secure: bUpnSgikr11B4ddmDUlAEg6ujKVM1Lwd7M7mecdXyMDVDobIOIpKA9GfgajfM9Uh9NDGYERvkIzXAikM4uY3Ltz+QtL4qJ14y7hp0Uw2IfoLcRiea315ieNdEQL2cF6EC6GEo49/Ht9iLLZsrlSZdOnYn+HjopYe58cYYuAHyp8=
   on:
     tags: true
     all_branches: true
     repo: scrapy/scrapy-djangoitem
-    condition: "$TOXENV == py27"
+    condition: $TOXENV == py27
