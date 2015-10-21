@@ -36,6 +36,11 @@ Besides of getting the model fields defined on your item, ``DjangoItem``
 provides a method to create and populate a Django model instance with the item
 data.
 
+Installing DjangoItem
+=====================
+
+    pip install django scrapy-django-item
+
 Using DjangoItem
 ================
 
