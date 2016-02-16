@@ -6,18 +6,18 @@ scrapy-djangoitem
    :target: https://pypi.python.org/pypi/scrapy-djangoitem
    :alt: PyPI Version
 
-.. image:: https://img.shields.io/travis/scrapy/scrapy-djangoitem/master.svg
-   :target: http://travis-ci.org/scrapy/scrapy-djangoitem
+.. image:: https://img.shields.io/travis/scrapy-plugins/scrapy-djangoitem/master.svg
+   :target: http://travis-ci.org/scrapy-plugins/scrapy-djangoitem
    :alt: Build Status
 
-.. image:: https://img.shields.io/github/license/scrapy/scrapy-djangoitem.svg
-   :target: https://github.com/scrapy/scrapy-djangoitem/blob/master/LICENSE
+.. image:: https://img.shields.io/github/license/scrapy-plugins/scrapy-djangoitem.svg
+   :target: https://github.com/scrapy-plugins/scrapy-djangoitem/blob/master/LICENSE
    :alt: License
 
 
 scrapy-djangoitem is an extension that allows you to define `Scrapy items
 <http://doc.scrapy.org/en/latest/topics/items.html>`_ using existing `Django
-models <https://docs.djangoproject.com/en/1.8/topics/db/models/>`_.
+models <https://docs.djangoproject.com/en/latest/topics/db/models/>`_.
 
 This utility provides a new class, named ``DjangoItem``, that you can use as a
 regular Scrapy item and link it to a Django model with its ``django_model``

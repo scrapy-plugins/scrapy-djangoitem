@@ -22,5 +22,5 @@ deploy:
   on:
     tags: true
     all_branches: true
-    repo: scrapy/scrapy-djangoitem
+    repo: scrapy-plugins/scrapy-djangoitem
     condition: $TOXENV == py27

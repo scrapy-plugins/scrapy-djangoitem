@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 setup(
     name='scrapy-djangoitem',
     version='1.0.0',
-    url='https://github.com/scrapy/scrapy-djangoitem',
+    url='https://github.com/scrapy-plugins/scrapy-djangoitem',
     description='Scrapy extension to write scraped items using Django models',
     long_description=open('README.rst').read(),
     author='Scrapy developers',
