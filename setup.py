@@ -26,5 +26,6 @@ setup(
         'Framework :: Django',
         'Framework :: Scrapy',
     ],
-    requires=['scrapy (>=0.24.5)', 'django', 'six'],
+    install_requires=['six'],
+    requires=['scrapy (>=0.24.5)', 'django'],
 )
