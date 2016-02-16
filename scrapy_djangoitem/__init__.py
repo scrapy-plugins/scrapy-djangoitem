@@ -1,5 +1,7 @@
+from six import with_metaclass
 from django.core.exceptions import ValidationError
 from scrapy.item import Field, Item, ItemMeta
+
 
 
 class DjangoItemMeta(ItemMeta):
@@ -19,9 +21,7 @@ class DjangoItemMeta(ItemMeta):
         return cls
 
 
-class DjangoItem(Item):
-
-    __metaclass__ = DjangoItemMeta
+class DjangoItem(with_metaclass(DjangoItemMeta, Item)):
 
     django_model = None
 
