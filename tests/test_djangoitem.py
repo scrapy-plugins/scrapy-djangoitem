@@ -2,6 +2,8 @@ import os
 import unittest
 
 os.environ['DJANGO_SETTINGS_MODULE'] = 'tests.settings'
+import django
+django.setup()
 
 from scrapy_djangoitem import DjangoItem, Field
 from tests.models import Person, IdentifiedPerson
