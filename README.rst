@@ -15,7 +15,7 @@ scrapy-djangoitem
    :alt: License
 
 
-scrapy-djangoitem is an extension that allows you to define `Scrapy items
+``scrapy-djangoitem`` is an extension that allows you to define `Scrapy items
 <http://doc.scrapy.org/en/latest/topics/items.html>`_ using existing `Django
 models <https://docs.djangoproject.com/en/latest/topics/db/models/>`_.
 
@@ -25,8 +25,21 @@ attribute. Start using it right away by importing it from this package::
 
     from scrapy_djangoitem import DjangoItem
 
-DjangoItem
-==========
+Installation
+============
+
+Starting with ``v.1.1`` both ``Python 2.7`` and ``Python 3.4/3.5`` are
+supported. For ``Python 3`` you need ``Scrapy v.1.1`` or above.
+
+Latest tested Django version is ``Django 1.9``.
+
+Install from ``PyPI`` using::
+
+  pip install scrapy-djangoitem
+
+
+Introduction
+============
 
 ``DjangoItem`` is a class of item that gets its fields definition from a
 Django model, you simply create a ``DjangoItem`` and specify what Django
@@ -36,8 +49,8 @@ Besides of getting the model fields defined on your item, ``DjangoItem``
 provides a method to create and populate a Django model instance with the item
 data.
 
-Using DjangoItem
-================
+Usage
+=====
 
 ``DjangoItem`` works much like ModelForms in Django, you create a subclass
 and define its ``django_model`` attribute to be a valid Django model. With this
@@ -63,7 +76,7 @@ Defining a basic ``DjangoItem``::
     class PersonItem(DjangoItem):
         django_model = Person
 
-``DjangoItem`` work just like Scrapy items::
+``DjangoItem`` works just like Scrapy items::
 
     >>> p = PersonItem()
     >>> p['name'] = 'John'
@@ -118,17 +131,17 @@ This is useful to provide properties to the field, like a default or any other
 property that your project uses. Those additional fields won't be taken into
 account when doing a ``DjangoItem.save()``.
 
-DjangoItem caveats
-==================
+Caveats
+=======
 
-DjangoItem is a rather convenient way to integrate Scrapy projects with Django
-models, but bear in mind that Django ORM may not scale well if you scrape a lot
+``DjangoItem`` is a rather convenient way to integrate Scrapy projects with Django
+models, but bear in mind that Django ORM **may not scale well** if you scrape a lot
 of items (ie. millions) with Scrapy. This is because a relational backend is
-often not a good choice for a write intensive application (such as a web
+**often not a good choice for a write intensive applications** (such as a web
 crawler), specially if the database is highly normalized and with many indices.
 
-Django settings set up
-======================
+Setup
+=====
 
 To use the Django models outside the Django application you need to set up the
 ``DJANGO_SETTINGS_MODULE`` environment variable and --in most cases-- modify
@@ -170,3 +183,34 @@ Notice that we modify the ``sys.path`` variable instead the ``PYTHONPATH``
 environment variable as we are already within the python runtime. If everything
 is right, you should be able to start the ``scrapy shell`` command and import
 the model ``Person`` (i.e. ``from myapp.models import Person``).
+
+Starting with ``Django 1.8`` you also have to explicitly set up ``Django`` if using
+it outside a ``manage.py`` context 
+(see `Django Docs <https://docs.djangoproject.com/en/1.8/intro/tutorial01/#playing-with-the-api>`_)::
+
+  import django
+  django.setup()
+
+
+Development
+===========
+
+Test suite from the ``tests`` directory can be run using ``tox`` by running::
+
+  tox
+  
+...using the configuration in ``tox.ini``. The ``Python`` interpreters
+used have to be installed locally on the system.
+
+
+Changelog
+=========
+
+**v.1.1** (Not yet released)
+
+* ``Python 3.4/3.5`` support
+* Making tests work with ``Django 1.9``again
+
+**v.1.0** (2015-04-29)
+
+* Initial version
