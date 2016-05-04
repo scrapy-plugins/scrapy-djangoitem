@@ -28,8 +28,8 @@ attribute. Start using it right away by importing it from this package::
 Installation
 ============
 
-Starting with ``v.1.1`` both ``Python 2.7`` and ``Python 3.4/3.5`` are
-supported. For ``Python 3`` you need ``Scrapy v.1.1`` or above.
+Starting with ``v1.1`` both ``Python 2.7`` and ``Python 3.4/3.5`` are
+supported. For ``Python 3`` you need ``Scrapy v1.1`` or above.
 
 Latest tested Django version is ``Django 1.9``.
 
@@ -206,13 +206,19 @@ used have to be installed locally on the system.
 Changelog
 =========
 
-v.1.1 (2016-05-04)
-------------------
+v1.1.1 (2016-05-04)
+-------------------
+
+* Distribute as universal wheel
+* Fix README's markup
+
+v1.1 (2016-05-04)
+-----------------
 
 * ``Python 3.4/3.5`` support
-* Making tests work with ``Django 1.9``again
+* Making tests work with ``Django 1.9`` again
 
-v.1.0 (2015-04-29)
-------------------
+v1.0 (2015-04-29)
+-----------------
 
 * Initial version
