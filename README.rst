@@ -185,7 +185,7 @@ is right, you should be able to start the ``scrapy shell`` command and import
 the model ``Person`` (i.e. ``from myapp.models import Person``).
 
 Starting with ``Django 1.8`` you also have to explicitly set up ``Django`` if using
-it outside a ``manage.py`` context 
+it outside a ``manage.py`` context
 (see `Django Docs <https://docs.djangoproject.com/en/1.8/intro/tutorial01/#playing-with-the-api>`_)::
 
   import django
@@ -198,7 +198,7 @@ Development
 Test suite from the ``tests`` directory can be run using ``tox`` by running::
 
   tox
-  
+
 ...using the configuration in ``tox.ini``. The ``Python`` interpreters
 used have to be installed locally on the system.
 
@@ -206,11 +206,13 @@ used have to be installed locally on the system.
 Changelog
 =========
 
-**v.1.1** (Not yet released)
+v.1.1 (2016-05-04)
+------------------
 
 * ``Python 3.4/3.5`` support
 * Making tests work with ``Django 1.9``again
 
-**v.1.0** (2015-04-29)
+v.1.0 (2015-04-29)
+------------------
 
 * Initial version
