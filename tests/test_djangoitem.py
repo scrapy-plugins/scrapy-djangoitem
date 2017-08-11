@@ -6,7 +6,7 @@ import django
 django.setup()
 
 from scrapy_djangoitem import DjangoItem, Field
-from tests.models import Person, IdentifiedPerson
+from tests.models import Person, IdentifiedPerson, Property
 
 
 class BasePersonItem(DjangoItem):
@@ -23,6 +23,10 @@ class OverrideFieldPersonItem(BasePersonItem):
 
 class IdentifiedPersonItem(DjangoItem):
     django_model = IdentifiedPerson
+
+
+class PropertyItem(DjangoItem):
+    django_model = Property
 
 
 class DjangoItemTest(unittest.TestCase):
@@ -100,3 +104,11 @@ class DjangoItemTest(unittest.TestCase):
         i = BasePersonItem()
         person = i.save(commit=False)
         self.assertEqual(person.name, 'Robot')
+
+    def test_foreign_key(self):
+        i = PropertyItem()
+        i['name'] = 'White House'
+        i['description'] = 'White House'
+        i['person'] = 1
+        p = i.save(commit=False)
+        self.assertTrue(p)

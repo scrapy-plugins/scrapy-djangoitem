@@ -3,7 +3,6 @@ from django.core.exceptions import ValidationError
 from scrapy.item import Field, Item, ItemMeta
 
 
-
 class DjangoItemMeta(ItemMeta):
 
     def __new__(mcs, class_name, bases, attrs):
@@ -11,13 +10,13 @@ class DjangoItemMeta(ItemMeta):
         cls.fields = cls.fields.copy()
 
         if cls.django_model:
-            cls._model_fields = []
+            cls._model_fields = {}
             cls._model_meta = cls.django_model._meta
             for model_field in cls._model_meta.fields:
                 if not model_field.auto_created:
                     if model_field.name not in cls.fields:
                         cls.fields[model_field.name] = Field()
-                    cls._model_fields.append(model_field.name)
+                    cls._model_fields[model_field.name] = model_field
         return cls
 
 
@@ -67,7 +66,12 @@ class DjangoItem(with_metaclass(DjangoItemMeta, Item)):
     @property
     def instance(self):
         if self._instance is None:
-            modelargs = dict((k, self.get(k)) for k in self._values
-                             if k in self._model_fields)
+            modelargs = {}
+            for k in self._values:
+                if k in self._model_fields:
+                    if self._model_fields[k].is_relation:
+                        modelargs[k] = self._model_fields[k].related_model(pk=self.get(k))
+                    else:
+                        modelargs[k] = self.get(k)
             self._instance = self.django_model(**modelargs)
         return self._instance
