@@ -16,3 +16,12 @@ class IdentifiedPerson(models.Model):
 
     class Meta:
         app_label = 'test_djangoitem'
+
+
+class Property(models.Model):
+    person = models.ForeignKey(Person)
+    name = models.CharField(max_length=255)
+    description = models.TextField()
+
+    class Meta:
+        app_label = 'test_djangoitem'
