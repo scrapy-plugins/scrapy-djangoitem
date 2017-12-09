@@ -12,12 +12,18 @@ class DjangoItemMeta(ItemMeta):
 
         if cls.django_model:
             cls._model_fields = []
+            cls._model_fields_m2m = []
             cls._model_meta = cls.django_model._meta
             for model_field in cls._model_meta.fields:
                 if not model_field.auto_created:
                     if model_field.name not in cls.fields:
                         cls.fields[model_field.name] = Field()
                     cls._model_fields.append(model_field.name)
+
+            for model_field_m2m in cls._model_meta.many_to_many:
+                if model_field_m2m.name not in cls.fields:
+                    cls.fields[model_field_m2m.name] = Field()
+                cls._model_fields_m2m.append(model_field_m2m.name)
         return cls
 
 
