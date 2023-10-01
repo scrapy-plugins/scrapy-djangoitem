@@ -35,6 +35,11 @@ class DjangoItem(with_metaclass(DjangoItemMeta, Item)):
             self.instance.save()
         return self.instance
 
+    async def asave(self, commit=True):
+        if commit:
+            await self.instance.asave()
+        return self.instance
+
     def is_valid(self, exclude=None):
         self._get_errors(exclude)
         return not bool(self._errors)
